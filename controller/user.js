@@ -18,7 +18,7 @@ exports.createdata = async(req,res)=>{
     catch(error){
        res.status(500).json({
           status :"failed",
-          Message : error.Message
+          message : error.message
           
        })
     }
@@ -48,7 +48,7 @@ exports.login = async(req,res)=>{
      
      res.status(200).json({
           status :"success",
-          Message : "user login successfully",
+          message : "user login successfully",
           data : emailverify,token
      })
        
@@ -56,8 +56,7 @@ exports.login = async(req,res)=>{
 
          res.status(500).json({
          status :"failed",
-         Message : error.Message
-          
+         message : error.message          
        })
     }
 }
