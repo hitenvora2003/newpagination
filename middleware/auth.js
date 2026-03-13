@@ -1,4 +1,4 @@
-
+const user = require('../model/user')
 const jwt = require('jsonwebtoken')
 
 exports.authcheck = async(req,res,next)=>{
@@ -9,6 +9,11 @@ exports.authcheck = async(req,res,next)=>{
       const tokenverify = jwt.verify(token,'ten')
       console.log(tokenverify);
       if(!tokenverify)throw new Error('invalid token')
+
+      const userVerify = await user.findById(tokenverify.id);
+    // console.log(userVerify);
+
+    if(!userVerify) throw new Error('Invalid User')
         
      next()
       
